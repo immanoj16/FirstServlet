@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Servlet</title>
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<form class="key-form" action="welcome" method="get">
+    Key Name: <input type="text" name="key" /><br />
+    Passphrase: <input type="text" name="passphrase" /><br />
+    Confirm passphrase: <input type="text" name="cpassphrase" /><br />
+    <input type="submit" value="save" />
+</form>
+<p id="demo"></p>
+<script>
+    $(document).ready(function(){
+
+        $("form").submit(function(){
+            var keyName = document.getElementsByName("key");
+            var passPhrase = document.getElementsByName("passphrase");
+            var cPassPhrase = document.getElementsByName("cpassphrase");
+
+            var myObj, myJSON, text, obj;
+
+            // Storing data:
+            myObj = { "key": keyName, "passPhrase": passPhrase, "cPassPhrase": cPassPhrase };
+            myJSON = JSON.stringify(myObj);
+            console.log(myJSON);
+            localStorage.setItem("/home/testJSON", myJSON);
+            // document.getElementById("demo").innerHTML = myJSON;
+
+        });
+    });
+    //Retrieving data:
+    /*text = localStorage.getItem("testJSON");
+    obj = JSON.parse(text);
+    document.getElementById("demo").innerHTML = obj.name;*/
+</script>
+</body>
+</html>
