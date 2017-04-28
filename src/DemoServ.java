@@ -3,10 +3,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.PrintWriter;
+import java.io.*;
 
 /**
  * Created by kanhu on 27/4/17.
@@ -19,35 +16,32 @@ public class DemoServ extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
 
         String keyName = request.getParameter("key");
-        printWriter.println("Key name: " + keyName);
 
         String passphrase = request.getParameter("passphrase");
-        printWriter.println("Passphrase: " + passphrase);
 
         String cpassphrase = request.getParameter("cpassphrase");
-        printWriter.println("Confirm passphrase: " + cpassphrase);
 
-        // Runtime.getRuntime().exec("/usr/bin/gnome-terminal ls -la");
+        if (passphrase.equals(cpassphrase)) {
 
-        // String command= "/usr/bin/gnome-terminal" + "ssh-keygen -t rsa";
-        // Runtime rt = Runtime.getRuntime();
-        // Process pr = rt.exec(new String[]{"/usr/bin/gnome-terminal", "-c", "exit"});
+            String command[] = {"ssh-keygen", "-t", "rsa"};
+            Process process = new ProcessBuilder(command).start();
 
-        String[] commands = new String[]{"ssh-keygen", "-t", "rsa"};
+            OutputStream outputStream = process.getOutputStream();
+            PrintStream printStream = new PrintStream(outputStream);
+            printStream.println(keyName);
+            printStream.flush();
+            printStream.println("y");
+            printStream.flush();
+            printStream.println(passphrase);
+            printStream.flush();
+            printStream.println(passphrase);
+            printStream.flush();
 
-        ProcessBuilder processBuilder = new ProcessBuilder(commands);
-
-        Process process = processBuilder.start();
-        OutputStream outputStream = process.getOutputStream();
-        PrintStream printStream = new PrintStream(outputStream);
-        printStream.println(keyName);
-        printStream.flush();
-        printStream.println("y");
-        printStream.flush();
-        printStream.println(passphrase);
-        printStream.flush();
-        printStream.println(cpassphrase);
-        printStream.flush();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String cOutput;
+            while ((cOutput = bufferedReader.readLine()) != null)
+                System.out.println(cOutput);
+        }
 
         printWriter.close();
     }
