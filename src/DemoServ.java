@@ -41,8 +41,11 @@ public class DemoServ extends HttpServlet {
             String cOutput;
             while ((cOutput = bufferedReader.readLine()) != null)
                 System.out.println(cOutput);
+            printWriter.println("Successfully key is created...");
         }
-
+        else {
+            printWriter.println("passphrase is not matched...");
+        }
         printWriter.close();
     }
 }

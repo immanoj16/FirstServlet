@@ -10,7 +10,7 @@
     
     <servlet-mapping>
         <servlet-name>DemoServ</servlet-name>
-        <url-pattern>/welcome</url-pattern>
+        <url-pattern>/onSubmit()</url-pattern>
     </servlet-mapping>
     
     <welcome-file-list>

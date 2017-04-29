@@ -6,32 +6,44 @@
     <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<form class="key-form" action="welcome" method="get">
+<form action="welcome" method="get">
     Key Name: <input type="text" name="key" /><br />
     Passphrase: <input type="text" name="passphrase" /><br />
     Confirm passphrase: <input type="text" name="cpassphrase" /><br />
-    <input type="submit" value="save" />
+    <input type="submit" value="save"/>
 </form>
-<p id="demo"></p>
 <script>
-    $(document).ready(function(){
+    /*function onSubmit(){
+    var keyName = document.getElementsByName("key").value;
+    var passPhrase = document.getElementsByName("passphrase").value;
+    var cPassPhrase = document.getElementsByName("cpassphrase").value;
 
-        $("form").submit(function(){
-            var keyName = document.getElementsByName("key");
-            var passPhrase = document.getElementsByName("passphrase");
-            var cPassPhrase = document.getElementsByName("cpassphrase");
+    var myObj, myJSON, text, obj;
 
-            var myObj, myJSON, text, obj;
-
-            // Storing data:
-            myObj = { "key": keyName, "passPhrase": passPhrase, "cPassPhrase": cPassPhrase };
-            myJSON = JSON.stringify(myObj);
-            console.log(myJSON);
-            localStorage.setItem("/home/testJSON", myJSON);
-            // document.getElementById("demo").innerHTML = myJSON;
-
-        });
-    });
+    //            // Storing data:
+    myObj = { "key": keyName, "passPhrase": passPhrase, "cPassPhrase": cPassPhrase };
+    myJSON = JSON.stringify(myObj);
+    console.log(myJSON);
+    localStorage.setItem("./testJson", myJSON);
+    }*/
+//    $(document).ready(function(){
+//
+//        $("#submit").click(function(){
+//            var keyName = document.getElementsByName("key").value;
+//            var passPhrase = document.getElementsByName("passphrase").value;
+//            var cPassPhrase = document.getElementsByName("cpassphrase").value;
+//
+//            var myObj, myJSON, text, obj;
+//
+//            // Storing data:
+//            myObj = { "key": keyName, "passPhrase": passPhrase, "cPassPhrase": cPassPhrase };
+//            myJSON = JSON.stringify(myObj);
+//            console.log(myJSON);
+//            localStorage.setItem("./testJson", myJSON);
+//            // document.getElementById("demo").innerHTML = myJSON;
+//
+//        });
+//    });
     //Retrieving data:
     /*text = localStorage.getItem("testJSON");
     obj = JSON.parse(text);
