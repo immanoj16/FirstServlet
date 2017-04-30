@@ -1,3 +1,5 @@
+package com.first.manoj;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,7 +11,7 @@ import java.io.*;
  * Created by kanhu on 27/4/17.
  */
 
-@WebServlet(name = "DemoServ")
+@WebServlet(name = "com.first.manoj.DemoServ")
 public class DemoServ extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -20,6 +22,9 @@ public class DemoServ extends HttpServlet {
         String passphrase = request.getParameter("passphrase");
 
         String cpassphrase = request.getParameter("cpassphrase");
+
+        new ToJSON();
+
 
         if (passphrase.equals(cpassphrase)) {
 
