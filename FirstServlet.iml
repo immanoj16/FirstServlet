@@ -20,6 +20,8 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 4.1.2" level="application_server_libraries" />
+    <orderEntry type="library" name="FirstServlet" level="application" />
     <orderEntry type="library" name="gson-2.6.2" level="application" />
+    <orderEntry type="library" name="jackson-mapper-asl-1.2.0" level="application" />
   </component>
 </module>

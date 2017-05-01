@@ -6,12 +6,13 @@
     <script src="js/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<form action="welcome" method="get">
-    Key Name: <input type="text" name="key" /><br />
-    Passphrase: <input type="text" name="passphrase" /><br />
-    Confirm passphrase: <input type="text" name="cpassphrase" /><br />
-    <input type="submit" value="save"/>
+<form action="welcome" method="post">
+    Key Name: <input type="text" name="key" id="key"/><br />
+    Passphrase: <input type="text" name="passphrase" id="passphrase"/><br />
+    Confirm passphrase: <input type="text" name="cpassphrase" id="cpassphrase"/><br />
+    <input type="submit" value="save" />
 </form>
+<script src="js/myfunctions.js"></script>
 <script>
     /*function onSubmit(){
     var keyName = document.getElementsByName("key").value;

@@ -1,5 +1,10 @@
 package com.first.manoj;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,20 +18,50 @@ import java.io.*;
 
 @WebServlet(name = "com.first.manoj.DemoServ")
 public class DemoServ extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private static final long serialVersionUID = 1L;
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         PrintWriter printWriter = response.getWriter();
 
         String keyName = request.getParameter("key");
+        printWriter.println(keyName);
 
-        String passphrase = request.getParameter("passphrase");
+        String passPhrase = request.getParameter("passphrase");
+        printWriter.println(passPhrase);
 
-        String cpassphrase = request.getParameter("cpassphrase");
+        String cPassPhrase = request.getParameter("cpassphrase");
+        printWriter.println(cPassPhrase);
 
-        new ToJSON();
+        BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
+        String json = "";
+
+        if(br != null) {
+            json = br.readLine();
+        }
+
+        printWriter.println(json);
+        /*
+        // 2. initiate jackson mapper
+        ObjectMapper mapper = new ObjectMapper();
+
+        // 3. Convert received JSON to Article
+        try {
+            keyPhrase = mapper.readValue(json, KeyPhrase.class);
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+        }
+
+        // 4. Set response type to JSON
+        response.setContentType("application/json");
+
+        // 6. Send List<Article> as JSON to client
+        mapper.writeValue(keyPhrase);*/
 
 
-        if (passphrase.equals(cpassphrase)) {
+        if (passPhrase.equals(cPassPhrase)) {
 
             String command[] = {"ssh-keygen", "-t", "rsa"};
             Process process = new ProcessBuilder(command).start();
@@ -37,9 +72,9 @@ public class DemoServ extends HttpServlet {
             printStream.flush();
             printStream.println("y");
             printStream.flush();
-            printStream.println(passphrase);
+            printStream.println(passPhrase);
             printStream.flush();
-            printStream.println(passphrase);
+            printStream.println(passPhrase);
             printStream.flush();
 
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(process.getInputStream()));

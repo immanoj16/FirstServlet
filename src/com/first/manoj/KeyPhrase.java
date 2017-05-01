@@ -6,21 +6,4 @@ package com.first.manoj;
 public class KeyPhrase {
     private String keyName;
     private String passPhrase;
-
-    public String getKeyName() {
-        return keyName;
-    }
-
-    public void setKeyName(String keyName) {
-        this.keyName = keyName;
-    }
-
-    public String getPassPhrase() {
-        return passPhrase;
-    }
-
-    public void setPassPhrase(String passPhrase) {
-        this.passPhrase = passPhrase;
-    }
-
 }
