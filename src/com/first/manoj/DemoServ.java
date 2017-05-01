@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+
 /**
  * Created by kanhu on 27/4/17.
  */
@@ -26,7 +27,7 @@ public class DemoServ extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter printWriter = response.getWriter();
 
-        String keyName = request.getParameter("key");
+        /*String keyName = request.getParameter("key");
         printWriter.println(keyName);
 
         String passPhrase = request.getParameter("passphrase");
@@ -34,7 +35,7 @@ public class DemoServ extends HttpServlet {
 
         String cPassPhrase = request.getParameter("cpassphrase");
         printWriter.println(cPassPhrase);
-
+*/
         BufferedReader br = new BufferedReader(new InputStreamReader(request.getInputStream()));
         String json = "";
 
@@ -42,7 +43,12 @@ public class DemoServ extends HttpServlet {
             json = br.readLine();
         }
 
-        printWriter.println(json);
+        printWriter.println("json" + json);
+
+        Gson gson = new Gson();
+        KeyPhrase keyPhrase = gson.fromJson(json, KeyPhrase.class);
+
+        printWriter.println(keyPhrase);
         /*
         // 2. initiate jackson mapper
         ObjectMapper mapper = new ObjectMapper();
@@ -61,7 +67,7 @@ public class DemoServ extends HttpServlet {
         mapper.writeValue(keyPhrase);*/
 
 
-        if (passPhrase.equals(cPassPhrase)) {
+        /*if (passPhrase.equals(cPassPhrase)) {
 
             String command[] = {"ssh-keygen", "-t", "rsa"};
             Process process = new ProcessBuilder(command).start();
@@ -86,6 +92,6 @@ public class DemoServ extends HttpServlet {
         else {
             printWriter.println("passphrase is not matched...");
         }
-        printWriter.close();
+        printWriter.close();*/
     }
 }

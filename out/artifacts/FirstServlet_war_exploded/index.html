@@ -7,13 +7,13 @@
 </head>
 <body>
 <form action="welcome" method="post">
-    Key Name: <input type="text" name="key" id="key"/><br />
-    Passphrase: <input type="text" name="passphrase" id="passphrase"/><br />
-    Confirm passphrase: <input type="text" name="cpassphrase" id="cpassphrase"/><br />
-    <input type="submit" value="save" />
+    Key Name: <input id="key" name="key" type="text"><br>
+    PassPhrase: <input id="passphrase" name="passphrase" type="text"><br>
+    Confirm Passphrase: <input id="cpassphrase" name="cpassphrase" type="text"><br>
+    <input type="submit" value="save" onclick="sendAjax()" />
 </form>
 <script src="js/myfunctions.js"></script>
-<script>
+<!-- <script>
     /*function onSubmit(){
     var keyName = document.getElementsByName("key").value;
     var passPhrase = document.getElementsByName("passphrase").value;
@@ -49,6 +49,6 @@
     /*text = localStorage.getItem("testJSON");
     obj = JSON.parse(text);
     document.getElementById("demo").innerHTML = obj.name;*/
-</script>
+</script> -->
 </body>
 </html>

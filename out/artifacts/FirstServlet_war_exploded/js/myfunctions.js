@@ -2,7 +2,7 @@
  * Created by kanhu on 1/5/17.
  */
 
-$(document).ready(function () {
+/*$(document).ready(function () {
     $("form").submit(function () {
         keyName = $('#key').val();
         passPhrase = $('#passphrase').val();
@@ -27,16 +27,15 @@ $(document).ready(function () {
             }
         });
     });
-});
-/*function sendAjax() {
+});*/
+function sendAjax() {
 
     // get inputs
-    var keyPhrase = new Object();
-    keyPhrase.key = $('#key').val();
-    keyPhrase.passphrase = $('#passphrase').val();
-    keyPhrase.cpassphrase = $('#cpassphrase').val();
+    keyName = $('#key').val();
+    passPhrase = $('#passphrase').val();
+    cPassPhrase = $('#cpassphrase').val();
 
-    console.log(keyPhrase);
+    var keyPhrase = {"keyName": keyName, "passPhrase": passPhrase, "cPassPhrase": cPassPhrase};
 
     $.ajax({
         url: "welcome",
@@ -53,4 +52,6 @@ $(document).ready(function () {
             alert("failure");
         }
     });
-}*/
+}
+
+console.log("fine");
